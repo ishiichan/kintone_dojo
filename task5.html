@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table id="table" border="1">
+      <tr>
+        <td id="date">日付</td>
+        <td id="category">カテゴリー</td>
+        <td id="content">記事内容</td>
+      </tr>
+    </table>
+    <style>
+      #table {
+        width: 95%;
+      }
+
+      #date {
+        width: 20%;
+      }
+      #category {
+        width: 15%;
+      }
+      #content {
+        width: 65%;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"></script>
+    <script>
+      'use strict';
+
+      //   ↓ axiosによるAPIの取得
+      const apiUrl =
+        'https://oykh3vmu623yt5rufrstzlyxyi0kitod.lambda-url.ap-northeast-1.on.aws/';
+
+      axios
+        .get(apiUrl, {
+          params: {
+            id: 'dojo',
+            query: 'limit 3',
+          },
+        })
+        .then((resp) => {
+          console.log(resp);
+          const tables = document.getElementById('table');
+
+          for (let index1 = 0; index1 < Object.keys(resp).length; index1++) {
+            const record = document.createElement('tr');
+
+            tables.appendChild(record);
+            for (let index2 = 0; index2 < 3; index2++) {
+              const cell = document.createElement('td');
+              cell.id = index1 + 'cell' + index2;
+              cell.href = '';
+              const page = document.createElement('a');
+              //   page.href = '';
+              //   page.target = '_blank';
+              console.log(resp.data[index1].content.value);
+              record.appendChild(cell);
+              cell.appendchild(page);
+
+              if (index2 === 0) {
+                document.getElementById(index1 + 'cell' + 0).textContent =
+                  resp.data[index1].day.value;
+              } else if (index2 === 1) {
+                document.getElementById(index1 + 'cell' + 1).textContent =
+                  resp.data[index1].category.value;
+              } else {
+                document.getElementById(index1 + 'cell' + 2).textContent =
+                  resp.data[index1].content.value;
+              }
+            }
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>
