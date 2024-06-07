@@ -93,22 +93,22 @@
     <script>
       const fileManage = {
         f001: {
-          folderName: "情報システム部",
-          viewAuth: "Everyone",
-          editAuth: "情報システム部",
-          deleteAuth: "情報システム部",
+          folderName: '情報システム部',
+          viewAuth: 'Everyone',
+          editAuth: '情報システム部',
+          deleteAuth: '情報システム部',
         },
         f002: {
-          folderName: "経営管理部",
-          viewAuth: "経営管理部",
-          editAuth: "経営管理部",
-          deleteAuth: "経営管理部",
+          folderName: '経営管理部',
+          viewAuth: '経営管理部',
+          editAuth: '経営管理部',
+          deleteAuth: '経営管理部',
         },
         f003: {
-          folderName: "営業部",
-          viewAuth: "Everyone",
-          editAuth: "営業部",
-          deleteAuth: "営業部",
+          folderName: '営業部',
+          viewAuth: 'Everyone',
+          editAuth: '営業部',
+          deleteAuth: '営業部',
         },
       };
       // Object.keysはオブジェクトの各値にアクセスし、配列形式で返す
@@ -126,21 +126,21 @@
       // ⼿順3-2　（２重ループでオブジェクトの一階層目（３つ）× オブジェクトの二階層目（４つ）で12個要素を格納する。）
       array1.forEach((val1, index1) => {
         const cell_content = Object.values(val1);
-        keyName = Object.keys(val1);
+        const keyName = Object.keys(val1);
 
         // console.log(keyName);
         // >>> (4) ['folderName', 'viewAuth', 'editAuth', 'deleteAuth']
 
         cell_content.forEach((val2, index2) => {
           const each_cell = document.getElementById(
-            array2[index1] + "-" + keyName[index2]
+            array2[index1] + '-' + keyName[index2]
           ); // >>> 'f001'-'folderName'など
           each_cell.textContent = val2;
         });
         //⼿順3-3「3-2の処理にさらに追加して、閲覧権限がEveryoneのフォルダ名をリスト表⽰する」の処理
-        const authorizedFolderList = document.getElementById("list");
-        if (array1[index1].viewAuth === "Everyone") {
-          const listElement = document.createElement("li");
+        const authorizedFolderList = document.getElementById('list');
+        if (array1[index1].viewAuth === 'Everyone') {
+          const listElement = document.createElement('li');
           listElement.textContent = val1.folderName;
           authorizedFolderList.appendChild(listElement);
         }
