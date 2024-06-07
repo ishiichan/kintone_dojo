@@ -114,30 +114,19 @@
       // Object.keysはオブジェクトの各値にアクセスし、配列形式で返す
       const array1 = Object.values(fileManage);
       const array2 = Object.keys(fileManage);
-      // console.log(fileManage);
-      // >>> {f001: {…}, f002: {…}, f003: {…}}
 
-      // console.log(array1);
-      // >>> (3) [{…}, {…}, {…}]
-      // 0: deleteAuth: "情報システム部"editAuth: "情報システム部"folderName: "情報システム部"viewAuth: "Everyone" ...
-
-      // console.log(array2);
-      // >>> (3) ['f001', 'f002', 'f003']
-      // ⼿順3-2　（２重ループでオブジェクトの一階層目（３つ）× オブジェクトの二階層目（４つ）で12個要素を格納する。）
+      //  ⼿順3-2（2重ループでオブジェクトの一階層目（3つ）× オブジェクトの二階層目（4つ）で12個要素を格納する。）
       array1.forEach((val1, index1) => {
         const cell_content = Object.values(val1);
         const keyName = Object.keys(val1);
 
-        // console.log(keyName);
-        // >>> (4) ['folderName', 'viewAuth', 'editAuth', 'deleteAuth']
-
         cell_content.forEach((val2, index2) => {
           const each_cell = document.getElementById(
             array2[index1] + '-' + keyName[index2]
-          ); // >>> 'f001'-'folderName'など
+          );
           each_cell.textContent = val2;
         });
-        //⼿順3-3「3-2の処理にさらに追加して、閲覧権限がEveryoneのフォルダ名をリスト表⽰する」の処理
+        // ⼿順3-3「3-2の処理にさらに追加して、閲覧権限がEveryoneのフォルダ名をリスト表⽰する」の処理
         const authorizedFolderList = document.getElementById('list');
         if (array1[index1].viewAuth === 'Everyone') {
           const listElement = document.createElement('li');
