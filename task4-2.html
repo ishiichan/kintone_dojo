@@ -82,85 +82,26 @@
       const disc = document.getElementsByClassName('slct')[1];
       let priceDifference = 0;
       let priceDifferenceSecond = 0;
-      console.log(secureOption.value);
-      function switchFunc() {
-        switch (secureOption.value) {
-          case '1':
-            priceDifference = 250;
-            break;
-          case '2':
-            priceDifference = 500;
-            break;
-          case '3':
-            priceDifference = 750;
-            break;
-          case '4':
-            priceDifference = 1000;
-            break;
-          case '5':
-            priceDifference = 1250;
-            break;
-          default:
-            priceDifference = 250;
-            break;
-        }
-        return priceDifference;
-      }
-      function switchFunc2() {
-        switch (disc.value) {
-          case '1':
-            priceDifferenceSecond = 1000;
-            break;
-          case '2':
-            priceDifferenceSecond = 2000;
-            break;
-          case '3':
-            priceDifferenceSecond = 3000;
-            break;
-          case '4':
-            priceDifferenceSecond = 4000;
-            break;
-          case '5':
-            priceDifferenceSecond = 5000;
-            break;
-          default:
-            priceDifferenceSecond = 1000;
-            break;
-        }
-        return priceDifferenceSecond;
-      }
-
-      console.log(priceDifference);
 
       function func2() {
-        if (checkBoxOne.checked) {
-          currentPrice = currentPrice + priceDifference;
-          return currentPrice;
-        } else {
-          currentPrice = currentPrice - priceDifference;
-          return currentPrice;
-        }
+        priceDifference = secureOption.value * 250;
+        currentPrice = currentPrice + priceDifference;
+        return currentPrice;
       }
 
       function func3() {
-        if (checkBoxTwo.checked) {
-          currentPrice = currentPrice + priceDifferenceSecond;
-          return currentPrice;
-        } else {
-          currentPrice = currentPrice - priceDifferenceSecond;
-          return currentPrice;
-        }
+        priceDifferenceSecond = disc.value * 1000;
+        currentPrice = currentPrice + priceDifferenceSecond;
+        return currentPrice;
       }
 
       document.getElementById('btn').onclick = () => {
         // 最終計算式を書く
         if (checkBoxOne.checked) {
-          switchFunc();
           func2();
           console.log('Hoge');
         }
         if (checkBoxTwo.checked) {
-          switchFunc2();
           func3();
         }
         priceShow.innerHTML = currentPrice;
