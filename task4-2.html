@@ -74,30 +74,30 @@
     </main>
     <script>
       let currentPrice = 3900;
-      let switching_one = false;
-      let switching_two = false;
-      const checkBox_one = document.getElementsByClassName("chk")[0];
-      const checkBox_two = document.getElementsByClassName("chk")[1];
-      const priceShow = document.getElementById("price");
-      const secureOption = document.getElementsByClassName("slct")[0];
-      const disc = document.getElementsByClassName("slct")[1];
+
+      const checkBoxOne = document.getElementsByClassName('chk')[0];
+      const checkBoxTwo = document.getElementsByClassName('chk')[1];
+      const priceShow = document.getElementById('price');
+      const secureOption = document.getElementsByClassName('slct')[0];
+      const disc = document.getElementsByClassName('slct')[1];
       let priceDifference = 0;
+      let priceDifferenceSecond = 0;
       console.log(secureOption.value);
       function switchFunc() {
         switch (secureOption.value) {
-          case "1":
+          case '1':
             priceDifference = 250;
             break;
-          case "2":
+          case '2':
             priceDifference = 500;
             break;
-          case "3":
+          case '3':
             priceDifference = 750;
             break;
-          case "4":
+          case '4':
             priceDifference = 1000;
             break;
-          case "5":
+          case '5':
             priceDifference = 1250;
             break;
           default:
@@ -108,86 +108,58 @@
       }
       function switchFunc2() {
         switch (disc.value) {
-          case "1":
-            priceDifference_second = 1000;
+          case '1':
+            priceDifferenceSecond = 1000;
             break;
-          case "2":
-            priceDifference_second = 2000;
+          case '2':
+            priceDifferenceSecond = 2000;
             break;
-          case "3":
-            priceDifference_second = 3000;
+          case '3':
+            priceDifferenceSecond = 3000;
             break;
-          case "4":
-            priceDifference_second = 4000;
+          case '4':
+            priceDifferenceSecond = 4000;
             break;
-          case "5":
-            priceDifference_second = 5000;
+          case '5':
+            priceDifferenceSecond = 5000;
             break;
           default:
-            priceDifference_second = 1000;
+            priceDifferenceSecond = 1000;
             break;
         }
-        return priceDifference_second;
+        return priceDifferenceSecond;
       }
 
       console.log(priceDifference);
 
       function func2() {
-        if (switching_one === true) {
-          let changedPrice = currentPrice + priceDifference;
-          currentPrice = changedPrice;
+        if (checkBoxOne.checked) {
+          currentPrice = currentPrice + priceDifference;
           return currentPrice;
         } else {
-          let changedPrice = currentPrice - priceDifference;
-          currentPrice = changedPrice;
+          currentPrice = currentPrice - priceDifference;
           return currentPrice;
         }
       }
-
-      checkBox_one.onchange = () => {
-        if (switching_one === false) {
-          // priceShow.innerHTML = changedPrice;
-          switching_one = true;
-          return switching_one;
-          console.log(secureOption.value);
-        } else {
-          // priceShow.innerHTML = changedPrice;
-          switching_one = false;
-          return switching_one;
-        }
-      };
 
       function func3() {
-        if (switching_two === true) {
-          let changedPrice = currentPrice + priceDifference_second;
-          currentPrice = changedPrice;
+        if (checkBoxTwo.checked) {
+          currentPrice = currentPrice + priceDifferenceSecond;
           return currentPrice;
         } else {
-          let changedPrice = currentPrice - priceDifference_second;
-          currentPrice = changedPrice;
+          currentPrice = currentPrice - priceDifferenceSecond;
           return currentPrice;
         }
       }
-      checkBox_two.onchange = () => {
-        if (switching_two === false) {
-          // priceShow.innerHTML = changedPrice;
-          switching_two = true;
-          return switching_two;
-        } else {
-          // priceShow.innerHTML = changedPrice;
-          switching_two = false;
-          return switching_two;
-        }
-      };
 
-      document.getElementById("btn").onclick = () => {
+      document.getElementById('btn').onclick = () => {
         // 最終計算式を書く
-        if (switching_one === true) {
+        if (checkBoxOne.checked) {
           switchFunc();
           func2();
-          console.log("Hoge");
+          console.log('Hoge');
         }
-        if (switching_two === true) {
+        if (checkBoxTwo.checked) {
           switchFunc2();
           func3();
         }
