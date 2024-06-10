@@ -20,12 +20,21 @@
 
       #date {
         width: 20%;
+        text-align: center;
       }
       #category {
         width: 15%;
+        text-align: center;
       }
       #content {
         width: 65%;
+        text-align: center;
+      }
+      .cell1 {
+        text-align: center;
+      }
+      .cell2 {
+        text-align: center;
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"></script>
@@ -53,24 +62,44 @@
             tables.appendChild(record);
             for (let index2 = 0; index2 < 3; index2++) {
               const cell = document.createElement('td');
-              cell.id = index1 + 'cell' + index2;
-              cell.href = '';
+
               const page = document.createElement('a');
-              //   page.href = '';
-              //   page.target = '_blank';
+              page.id = index1 + 'cell' + index2;
+
+              page.target = '_blank';
+
               console.log(resp.data[index1].content.value);
               record.appendChild(cell);
-              cell.appendchild(page);
+              cell.appendChild(page);
 
               if (index2 === 0) {
                 document.getElementById(index1 + 'cell' + 0).textContent =
                   resp.data[index1].day.value;
+                cell.className = 'cell1';
               } else if (index2 === 1) {
                 document.getElementById(index1 + 'cell' + 1).textContent =
                   resp.data[index1].category.value;
+                cell.className = 'cell2';
+                switch (resp.data[index1].category.value) {
+                  case '企業情報':
+                    cell.style.color = 'white';
+                    cell.style.backgroundColor = 'skyblue';
+                    break;
+                  case 'IR 情報':
+                    cell.style.color = 'white';
+                    cell.style.backgroundColor = 'red';
+                    break;
+                  case '製品':
+                    cell.style.color = 'white';
+                    cell.style.backgroundColor = 'green';
+                    break;
+                }
+                // ↑なぜこの書き方（cell指定で真ん中の列のcellだけ色が変わるのか）でうまくいくのかはわからない
+                // if文内の処理で扱っているタグ要素にしか適用されないものなのだろうか
               } else {
                 document.getElementById(index1 + 'cell' + 2).textContent =
                   resp.data[index1].content.value;
+                page.href = resp.data[index1].url.value;
               }
             }
           }
