@@ -94,8 +94,6 @@
                     cell.style.backgroundColor = 'green';
                     break;
                 }
-                // ↑なぜこの書き方（cell指定で真ん中の列のcellだけ色が変わるのか）でうまくいくのかはわからない
-                // if文内の処理で扱っているタグ要素にしか適用されないものなのだろうか
               } else {
                 document.getElementById(index1 + 'cell' + 2).textContent =
                   resp.data[index1].content.value;
