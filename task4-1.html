@@ -63,42 +63,34 @@
     </main>
     <script>
       let currentPrice = 3900;
-      let switching_one = false;
-      let switching_two = false;
-      // let changedPrice = 0;
-      // for (let i = 0; i < checkBox.length; i++) {
-      //   console.log("hi");
-      const checkBox_one = document.getElementsByClassName("chk")[0];
-      const checkBox_two = document.getElementsByClassName("chk")[1];
-      const priceShow = document.getElementById("price");
-      checkBox_one.onchange = () => {
-        if (switching_one === false) {
-          let changedPrice = currentPrice + 250;
-          priceShow.innerHTML = changedPrice;
-          switching_one = true;
-          currentPrice = changedPrice;
+
+      const checkBoxOne = document.getElementsByClassName('chk')[0];
+      const checkBoxTwo = document.getElementsByClassName('chk')[1];
+      const priceShow = document.getElementById('price');
+      checkBoxOne.onchange = () => {
+        if (checkBoxOne.checked) {
+          currentPrice = currentPrice + 250;
+          priceShow.innerHTML = currentPrice;
+
           return currentPrice;
         } else {
-          let changedPrice = currentPrice - 250;
-          priceShow.innerHTML = changedPrice;
-          switching_one = false;
-          currentPrice = changedPrice;
+          currentPrice = currentPrice - 250;
+          priceShow.innerHTML = currentPrice;
+
           return currentPrice;
         }
       };
 
-      checkBox_two.onchange = () => {
-        if (switching_two === false) {
-          let changedPrice = currentPrice + 1000;
-          priceShow.innerHTML = changedPrice;
-          switching_two = true;
-          currentPrice = changedPrice;
+      checkBoxTwo.onchange = () => {
+        if (checkBoxTwo.checked) {
+          currentPrice = currentPrice + 1000;
+          priceShow.innerHTML = currentPrice;
+
           return currentPrice;
         } else {
-          let changedPrice = currentPrice - 1000;
-          priceShow.innerHTML = changedPrice;
-          switching_two = false;
-          currentPrice = changedPrice;
+          currentPrice = currentPrice - 1000;
+          priceShow.innerHTML = currentPrice;
+
           return currentPrice;
         }
       };
