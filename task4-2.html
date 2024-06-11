@@ -80,16 +80,16 @@
       const priceShow = document.getElementById('price');
       const secureOption = document.getElementsByClassName('slct')[0];
       const disc = document.getElementsByClassName('slct')[1];
-      let priceDifference = 0;
-      let priceDifferenceSecond = 0;
+      // let priceDifference = 0;
+      // let priceDifferenceSecond = 0;
 
-      function func2() {
+      function calcSecureOptionPrice() {
         priceDifference = secureOption.value * 250;
         currentPrice = currentPrice + priceDifference;
         return currentPrice;
       }
 
-      function func3() {
+      function calcDiscPrice() {
         priceDifferenceSecond = disc.value * 1000;
         currentPrice = currentPrice + priceDifferenceSecond;
         return currentPrice;
@@ -98,11 +98,10 @@
       document.getElementById('btn').onclick = () => {
         // 最終計算式を書く
         if (checkBoxOne.checked) {
-          func2();
-          console.log('Hoge');
+          calcSecureOptionPrice();
         }
         if (checkBoxTwo.checked) {
-          func3();
+          calcDiscPrice();
         }
         priceShow.innerHTML = currentPrice;
         currentPrice = 3900;
