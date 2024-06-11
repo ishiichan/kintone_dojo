@@ -80,18 +80,16 @@
       const priceShow = document.getElementById('price');
       const secureOption = document.getElementsByClassName('slct')[0];
       const disc = document.getElementsByClassName('slct')[1];
-      // let priceDifference = 0;
-      // let priceDifferenceSecond = 0;
 
       function calcSecureOptionPrice() {
-        priceDifference = secureOption.value * 250;
-        currentPrice = currentPrice + priceDifference;
+        securePriceTotal = secureOption.value * 250;
+        currentPrice = currentPrice + securePriceTotal;
         return currentPrice;
       }
 
       function calcDiscPrice() {
-        priceDifferenceSecond = disc.value * 1000;
-        currentPrice = currentPrice + priceDifferenceSecond;
+        diskPriceTotal = disc.value * 1000;
+        currentPrice = currentPrice + diskPriceTotal;
         return currentPrice;
       }
 
