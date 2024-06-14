@@ -1,0 +1,36 @@
+#table {
+  width: 95%;
+}
+
+#date {
+  width: 20%;
+  text-align: center;
+}
+#category {
+  width: 15%;
+  text-align: center;
+}
+#content {
+  width: 65%;
+  text-align: center;
+}
+.cell1 {
+  text-align: center;
+}
+.product {
+  text-align: center;
+  color: white;
+  background-color: green;
+}
+
+.companyInformation {
+  text-align: center;
+  color: white;
+  background-color: skyblue;
+}
+
+.irInformation {
+  text-align: center;
+  color: white;
+  background-color: red;
+}
