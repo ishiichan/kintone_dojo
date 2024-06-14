@@ -1,13 +1,13 @@
 'use strict';
 
 // 日付をセルに入れる関数
-const createDateCell = (i, eachRecordVal, day, cell) => {
+const createDateCell = (i, eachRecordVal, cell) => {
   document.getElementById(i + 'cell' + 0).textContent = eachRecordVal.day.value;
   cell.className = 'cell1';
 };
 
 // カテゴリーをセルに入れる関数
-const createCategoryCell = (i, eachRecordVal, category, cell) => {
+const createCategoryCell = (i, eachRecordVal, cell) => {
   document.getElementById(i + 'cell' + 1).textContent =
     eachRecordVal.category.value;
   switch (eachRecordVal.category.value) {
@@ -24,7 +24,7 @@ const createCategoryCell = (i, eachRecordVal, category, cell) => {
 };
 
 // 記事内容をセルに入れる関数
-const createContentCell = (i, eachRecordVal, content, cell) => {
+const createContentCell = (i, eachRecordVal, cell) => {
   const page = document.createElement('a');
   cell.appendChild(page);
   page.id = cell.id;
@@ -64,8 +64,8 @@ axios
     const tables = document.getElementById('table');
     for (let index1 = 0; index1 < resp.data.length; index1++) {
       const record = document.createElement('tr');
-      let eachVal = resp.data[index1];
-      console.log(eachVal);
+      const eachVal = resp.data[index1];
+
       tables.appendChild(record);
       for (let index2 = 0; index2 < 3; index2++) {
         const cell = document.createElement('td');
@@ -75,11 +75,11 @@ axios
 
         // 短くなったそれぞれの列に値を挿入するif文
         if (index2 === 0) {
-          createDateCell(index1, eachVal, eachVal.day, cell);
+          createDateCell(index1, eachVal, cell);
         } else if (index2 === 1) {
-          createCategoryCell(index1, eachVal, eachVal.category, cell);
+          createCategoryCell(index1, eachVal, cell);
         } else {
-          createContentCell(index1, eachVal, eachVal.content, cell);
+          createContentCell(index1, eachVal, cell);
         }
       }
     }
