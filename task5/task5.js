@@ -45,10 +45,10 @@ const createContentCell = (i, eachRecordVal, cell) => {
 const editUrlText = (string) => {
   if (string.length > 30) {
     return string.substr(0, 30) + '...';
-  } else {
-    return string;
   }
+  return string;
 };
+
 //   ↓ axiosによるAPIの取得
 const apiUrl =
   'https://oykh3vmu623yt5rufrstzlyxyi0kitod.lambda-url.ap-northeast-1.on.aws/';
