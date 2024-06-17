@@ -15,7 +15,6 @@
     newRow.forEach((eachAction) => {
       event.record.Table.value.push(addRow(eachAction));
     });
-
     return event;
   });
 
