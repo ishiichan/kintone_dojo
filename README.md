@@ -1,1 +1,0 @@
-# Kintone_Dojo Repo
