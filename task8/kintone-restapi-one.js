@@ -1,9 +1,9 @@
 (() => {
   "use strict";
   const events = ["app.record.create.show"];
-  kintone.events.on(events, (event) => {
+  kintone.events.on(events, async (event) => {
     console.log(event);
-    kintone
+    await kintone
       .api(kintone.api.url("/k/v1/app/form/fields.json", true), "GET", {
         app: kintone.app.getId(),
         lang: "ja",
@@ -11,7 +11,7 @@
       .then((resp) => {
         console.log(resp);
         console.log(resp.properties.Table.fields.Action5.options);
-        const actionFiveValue = Object.values(
+        const actionFiveValue = Object.keys(
           resp.properties.Table.fields.Action5.options
         );
         console.log(actionFiveValue);
