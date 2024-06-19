@@ -1,5 +1,6 @@
 (() => {
   "use strict";
+
   const events = ["app.record.create.show"];
   kintone.events.on(events, async (event) => {
     await kintone
@@ -7,20 +8,20 @@
         app: kintone.app.getId(),
         lang: "ja",
       })
+
       .then((resp) => {
-        const actionFiveValue = Object.keys(
+        const options = Object.values(
           resp.properties.Table.fields.Action5.options
         );
-
+        options.sort((a, b) => a.index - b.index);
         event.record.Table.value.pop();
-        actionFiveValue.forEach((eachActionFiveValue) => {
-          event.record.Table.value.push(addRow(eachActionFiveValue));
-        });
+        for (let i = 0; i < options.length; i++) {
+          event.record.Table.value.push(addRow(options[i].label));
+        }
       })
       .catch((err) => {
         console.log(err);
       });
-
     return event;
   });
 
