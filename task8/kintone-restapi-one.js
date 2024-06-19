@@ -2,19 +2,16 @@
   "use strict";
   const events = ["app.record.create.show"];
   kintone.events.on(events, async (event) => {
-    console.log(event);
     await kintone
       .api(kintone.api.url("/k/v1/app/form/fields.json", true), "GET", {
         app: kintone.app.getId(),
         lang: "ja",
       })
       .then((resp) => {
-        console.log(resp);
-        console.log(resp.properties.Table.fields.Action5.options);
         const actionFiveValue = Object.keys(
           resp.properties.Table.fields.Action5.options
         );
-        console.log(actionFiveValue);
+
         event.record.Table.value.pop();
         actionFiveValue.forEach((eachActionFiveValue) => {
           event.record.Table.value.push(addRow(eachActionFiveValue));
