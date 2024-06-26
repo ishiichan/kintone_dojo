@@ -1,6 +1,9 @@
 (() => {
   "use strict";
-  const events = ["app.record.edit.submit", "app.record.create.submit"];
+  const events = [
+    "app.record.edit.change.重複禁止項目_自動計算",
+    "app.record.create.submit",
+  ];
 
   kintone.events.on(events, async (event) => {
     const client = new KintoneRestAPIClient();
@@ -22,6 +25,7 @@
             ) {
               return false;
             }
+            break;
           }
         }
         return event;
