@@ -19,10 +19,16 @@
   };
   const suppressZero = (num) => {
     let idx = 0;
-    num.toString(10);
-    while (num.charAt(idx) === "0") {
-      idx++;
+    if (num === undefined) {
+      num = "";
     }
+    num.toString(10);
+    if (num !== "0") {
+      while (num.charAt(idx) === "0") {
+        idx++;
+      }
+    }
+
     return num.slice(idx);
   };
 
@@ -43,15 +49,9 @@
     const day = dateFns.format(event.record.日付.value, "yyyyMMdd");
     event.record.重複禁止項目_文字列.disabled = true;
 
-    if (event.record.管理番号.value === undefined) {
-      event.record.管理番号.value = "";
-    }
-
     productSw(event.record.サイボウズ製品.value);
-
-    event.record.重複禁止項目_文字列.value = `${day}-${productName}-${suppressZero(
-      event.record.管理番号.value
-    )}`;
+    const administrationID = suppressZero(event.record.管理番号.value);
+    event.record.重複禁止項目_文字列.value = `${day}-${productName}-${administrationID}`;
 
     return event;
   });
