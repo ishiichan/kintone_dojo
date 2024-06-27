@@ -10,14 +10,12 @@
     } else {
       num = event.record.$id.value;
     }
-    return await client.record
+    return client.record
       .getAllRecords({
         app: kintone.app.getId(),
         condition: `$id != ${num}`,
       })
       .then((res) => {
-        console.log(res);
-
         for (let i = 0; i < res.length; i++) {
           if (
             res[i].重複禁止項目_自動計算.value ===
@@ -32,7 +30,6 @@
             }
             break;
           }
-          // }
         }
         return event;
       })
